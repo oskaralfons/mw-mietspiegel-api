@@ -224,32 +224,30 @@ exports.getSqmCategory = obj_spaceSqm => {
 };
 
 exports.calculateRentIndex = (
-  rentIndexYear,
-  obj_status,
-  yearCategory,
-  sqmCategory,
-  featureGroup1,
-  featureGroup2,
-  featureGroup3,
-  featureGroup4,
-  featureGroup5
+    rentIndexYear,
+    obj_status,
+    yearCategory,
+    sqmCategory,
+    featureGroup1,
+    featureGroup2,
+    featureGroup3,
+    featureGroup4,
+    featureGroup5
 ) => {
+  let rentIndexValues = [];
   if (rentIndexYear == 2017) {
-    rentIndexValues =
-      helpers.rentIndex_Berlin_2017[sqmCategory][obj_status][yearCategory];
+    rentIndexValues = JSON.parse(JSON.stringify(helpers.rentIndex_Berlin_2017[sqmCategory][obj_status][yearCategory]))
   } else if (rentIndexYear == 2019) {
-    rentIndexValues =
-      helpers.rentIndex_Berlin_2019[sqmCategory][obj_status][yearCategory];
+    rentIndexValues = JSON.parse(JSON.stringify(helpers.rentIndex_Berlin_2019[sqmCategory][obj_status][yearCategory]))
   }
   featureGroupFactor =
-    1 +
-    (parseInt(featureGroup1) +
-      parseInt(featureGroup2) +
-      parseInt(featureGroup3) +
-      parseInt(featureGroup4) +
-      parseInt(featureGroup5)) *
+      1 +
+      (parseInt(featureGroup1) +
+          parseInt(featureGroup2) +
+          parseInt(featureGroup3) +
+          parseInt(featureGroup4) +
+          parseInt(featureGroup5)) *
       0.2;
-
   let rentIndexSpecific;
 
   if (featureGroupFactor * rentIndexValues[0] > rentIndexValues[2]) {

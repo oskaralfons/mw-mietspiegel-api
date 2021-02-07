@@ -5,8 +5,8 @@ API for determining rent index limits for Berlin addresses according to [Berlin 
 ## Using the API
 
 1. install Node dependencies `npm install`
-2. run API `node ./www/bin`
-3. send GET request to `http://localhost:3000/getRentIndex/` using the following body:
+2. run API `node ./bin/www`
+3. send POST request to `http://localhost:3000/getRentIndex/` using the following body:
 
 **required**
 * `obj_street` (string): street of the object
@@ -17,7 +17,7 @@ API for determining rent index limits for Berlin addresses according to [Berlin 
 * `obj_spaceSqm` (float): space of the object in square meters
 
 **optional**
-* `featureGroups` (integer): array [1, 2, 3, 4, 5] covering different appartment features categories according to [page 13 and following](https://www.berliner-mieterverein.de/uploads/2017/05/mietspiegel-2017-broschuere-190517.pdf). For a positive feature category use `-1` for a neutral category use `0` and for a positive category use `1`. 
+*  `featureGroup1`,`featureGroup2`,`featureGroup3`,`featureGroup4`,`featureGroup5` covering different appartment features categories according to [page 13 and following](https://www.berliner-mieterverein.de/uploads/2017/05/mietspiegel-2017-broschuere-190517.pdf). For a negative feature category use `-1` for a neutral category use `0` and for a positive category use `1`. 
 
 ## API response
 
