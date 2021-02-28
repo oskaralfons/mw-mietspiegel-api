@@ -15,6 +15,9 @@ API for determining rent index limits for Berlin addresses according to [Berlin 
 * `obj_constructionYear` (integer) construction year of the object
 * `rentIndexYear` (integer): requested rent index (2017 or 2019)
 * `obj_spaceSqm` (float): space of the object in square meters
+* `iwc` (boolean): wc inside the flat
+* `collectiveHeating` (boolean): is collective heating present
+* `bathRoom` (boolean): is a bathroom present inside the flat present
 
 **optional**
 *  `featureGroup1`,`featureGroup2`,`featureGroup3`,`featureGroup4`,`featureGroup5` covering different appartment features categories according to [page 13 and following](https://www.berliner-mieterverein.de/uploads/2017/05/mietspiegel-2017-broschuere-190517.pdf). For a negative feature category use `-1` for a neutral category use `0` and for a positive category use `1`. 
