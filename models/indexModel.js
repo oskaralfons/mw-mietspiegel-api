@@ -241,21 +241,18 @@ exports.calculateRentIndex = (
     rentIndexValues = JSON.parse(JSON.stringify(helpers.rentIndex_Berlin_2019[sqmCategory][obj_status][yearCategory]))
   }
   featureGroupFactor =
-      1 +
-      (parseInt(featureGroup1) +
+         (parseInt(featureGroup1) +
           parseInt(featureGroup2) +
           parseInt(featureGroup3) +
           parseInt(featureGroup4) +
           parseInt(featureGroup5)) *
       0.2;
-  let rentIndexSpecific;
-
-  if (featureGroupFactor * rentIndexValues[0] > rentIndexValues[2]) {
-    rentIndexSpecific = rentIndexValues[2];
-  } else if (featureGroupFactor * rentIndexValues[0] < rentIndexValues[1]) {
-    rentIndexSpecific = rentIndexValues[1];
-  } else {
-    rentIndexSpecific = featureGroupFactor * rentIndexValues[0];
+  let rentIndexSpecific = rentIndexValues[0];
+  if (featureGroupFactor > 0) {
+    rentIndexSpecific+= (rentIndexValues[2] - rentIndexValues[0]) * featureGroupFactor;
+  }
+  if (featureGroupFactor < 0) {
+    rentIndexSpecific-= (rentIndexValues[0] - rentIndexValues[1]) * featureGroupFactor * -1;
   }
 
   rentIndexValues.push(rentIndexSpecific);
