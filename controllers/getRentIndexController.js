@@ -2,7 +2,6 @@ const rentIndex = require("../models/indexModel");
 const {validationResult} = require("express-validator");
 
 exports.index = (req, res, next) => {
-    console.log(req.body)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return next(
@@ -61,7 +60,6 @@ exports.index = (req, res, next) => {
                 });
             } else {
                 let yearCategory = rentIndex.getYearCategory(obj_constructionYear, row.areaWas);
-                console.log('yearCategory', yearCategory);
                 calculatedRentIndex = rentIndex.calculateRentIndex(
                     rentIndexYear,
                     row.objectStatus,
